@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Super Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.admin-container
+		{
+			width: 400px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		form
+		{
+			margin-top: 50px;
+			font-size: 16px;
+		}
+
+		ul
+		{
+			padding: 0;
+			border: 1px solid #000;
+		}
+
+		li
+		{
+			margin: 30px 0;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+<div class="admin-container">
+	<h1>Super Admin</h1>
+
+	<form action="{{ path('admin_check_special') }}" method="post">
+		<ul>
+			<li>
+				<label for="username">Username:</label>
+				<input type="text" id="username" name="_username" value="{{ last_username }}"/>
+			</li>
+			<li>
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="_password"/>
+
+			</li>
+			{% if error %}
+				<li>
+					{{ error.messageKey|trans(error.messageData, 'security') }}
+				</li>
+			{% endif %}
+			<li>
+				<button type="submit">Log in</button>
+			</li>
+		</ul>
+
+	</form>
+
+</div>
+</body>
+</html>
