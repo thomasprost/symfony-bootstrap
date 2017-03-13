@@ -1,0 +1,28 @@
+{
+  "name": "symfony-bootstrap",
+  "version": "1.0.0",
+  "description": "Symfony Standard Edition ========================",
+  "devDependencies": {
+    "autoprefixer": "^6.7.6",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^2.2.0",
+    "grunt-modernizr": "^1.0.2",
+    "grunt-newer": "^1.2.0",
+    "grunt-postcss": "^0.8.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-optipng": "^5.2.1",
+    "jshint-stylish": "^2.2.1",
+    "load-grunt-tasks": "^3.5.2",
+    "pixrem": "^3.0.2"
+  },
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Safari >= 5"
+  ]
+}
