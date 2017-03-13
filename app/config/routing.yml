@@ -1,0 +1,19 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+# Admin routes
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+admin_login:
+    path:  /admin/login
+    defaults: { _controller: AppBundle:Security:login  }
+
+admin_check_special:
+    path:  /admin/login_check
+
+admin_logout_special:
+    path:  /admin/logout

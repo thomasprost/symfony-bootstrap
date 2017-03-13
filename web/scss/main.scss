@@ -1,0 +1,18 @@
+/** Frameworks and config **/
+
+@import "compass";
+@import "compass/reset";
+@import "partials/common/config";
+@import "partials/common/mixins";
+
+/** Base **/
+@import "partials/common/base";
+
+
+/** Layout **/
+@import "partials/layout/header";
+
+/** Pages **/
+@import "partials/pages/home";
+
+

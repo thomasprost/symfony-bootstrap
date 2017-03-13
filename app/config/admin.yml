@@ -1,0 +1,74 @@
+# Admin generator configuration
+easy_admin:
+    site_name: 'Symfony Bootstrap'
+    entities:
+        Project:
+            class: AppBundle\Entity\Project
+            label: 'Projects'
+            list:
+                fields:
+                   - id
+                   - displayed
+                   - { property: 'name', label: 'Name' }
+                   - { property: 'mainImage', type: 'image', base_path: '%app.path.project_images%' }
+                   - { property: 'createdAt', format: 'j / M / Y' }
+            show:
+               fields:
+                   - id
+                   - name
+                   - { property: 'mainImage', type: 'image', base_path: %app.path.project_images% }
+                   - categories
+                   - displayed
+                   - createdAt
+            form:
+               fields:
+                   - name
+                   - {property: 'slugText', label: 'Slug Text', help: 'Text to generate URL. Url format is id-projectName-slugtext. Ex: 1-valrhona-aux-sources-du-chocolat'}
+                   - { type: 'group',css_class: 'col-sm-6', label: 'Description', icon: 'briefcase'}
+                   - { property: 'translations', type: 'A2lix\TranslationFormBundle\Form\Type\TranslationsType'}
+                   - { type: 'group',css_class: 'col-sm-6', label: 'Media', icon: 'camera'}
+                   - { property: 'mainImageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType', help: 'Main Image description' }
+                   - { type: 'group',css_class: 'col-sm-12', label: 'Image Gallery', icon: 'image'}
+                   - { property: 'images', type: 'collection', type_options: { entry_type: 'AppBundle\Form\ImageType' }, help: 'Images for details page gallery'}
+                   - { type: 'group',css_class: 'col-sm-6', label: 'Categories', icon: 'list-alt'}
+                   - categories
+                   - { type: 'group',css_class: 'col-sm-6', label: 'Info', icon: 'coffee'}
+                   - { property: 'displayed', label: 'Is Public', help: 'Admins can see displayed and not displayed products.' }
+        Category:
+            class: AppBundle\Entity\Category
+            label: 'Categories'
+            new:
+                fields:
+                    - 'name'
+            edit:
+                fields:
+                    - 'name'
+            list:
+                title: 'Category %%entity_name%%'
+                fields:
+                    - 'id'
+                    - { property: 'name', label: 'Label' }
+                    - 'projects'
+
+    design:
+        brand_color: '#000'
+        form_theme: 'vertical'
+        menu:
+            - label: 'Projects'
+              icon: 'laptop'
+              children:
+                  - { entity: 'Project', icon: 'th-list', label: 'List Projects' }
+                  - { entity: 'Category', icon: 'tags', params: { sortField: 'position', sortDirection: 'ASC' } }
+                  - { entity: 'Project', icon: 'plus-circle', label: 'Add Project', params: { action: 'new' } }
+            - label: 'Categories'
+              icon: 'tags'
+              children:
+                  - { entity: 'Category', icon: 'th-list', label: 'List Categories' }
+            - { label: 'About this bootstrap' }
+            - { label: 'Website Home', route: 'home', icon: 'home', target: '_blank' }
+            - { label: 'Documentation', url: '', icon: 'book', target: '_blank' }
+            - { label: 'Logout', icon: 'sign-out', route: 'admin_logout_special' }
+        assets:
+            js:
+                - '//cdn.ckeditor.com/4.5.6/standard/ckeditor.js'
+                - 'js/backend.js'
